@@ -85,9 +85,10 @@ function Activities() {
               <table className="table table-hover">
                 <thead className="table-light">
                   <tr>
-                    <th>Activity</th>
+                    <th>User</th>
                     <th>Type</th>
                     <th>Duration</th>
+                    <th>Calories</th>
                     <th>Distance</th>
                     <th>Date</th>
                     <th>Actions</th>
@@ -95,15 +96,20 @@ function Activities() {
                 </thead>
                 <tbody>
                   {activities.map((activity, index) => (
-                    <tr key={activity.id || index}>
-                      <td><strong>{activity.name || 'Activity'}</strong></td>
+                    <tr key={activity._id || activity.id || index}>
+                      <td><strong>{activity.user_email || 'N/A'}</strong></td>
                       <td>
                         <span className="badge bg-info">
                           {activity.activity_type || 'N/A'}
                         </span>
                       </td>
-                      <td>{activity.duration || 'N/A'} mins</td>
-                      <td>{activity.distance || 'N/A'} km</td>
+                      <td>{activity.duration || 0} mins</td>
+                      <td>
+                        <span className="badge bg-danger">
+                          {activity.calories_burned || 0} cal
+                        </span>
+                      </td>
+                      <td>{activity.distance ? `${activity.distance} km` : 'N/A'}</td>
                       <td>{activity.date ? new Date(activity.date).toLocaleDateString() : 'N/A'}</td>
                       <td>
                         <button className="btn btn-sm btn-outline-primary me-1">View</button>

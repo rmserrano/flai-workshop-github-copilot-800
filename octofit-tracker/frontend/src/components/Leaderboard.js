@@ -72,7 +72,7 @@ function Leaderboard() {
       <div className="page-header">
         <div className="container">
           <h1>🏅 Leaderboard</h1>
-          <p className="mb-0">Top performers and team rankings</p>
+          <p className="mb-0">Top performing teams and rankings</p>
         </div>
       </div>
       
@@ -81,55 +81,58 @@ function Leaderboard() {
           <div className="empty-state">
             <div className="empty-state-icon">🏆</div>
             <h3>No Leaderboard Data</h3>
-            <p>Start logging activities to see rankings!</p>
+            <p>Start logging activities to see team rankings!</p>
           </div>
         ) : (
           <div className="table-wrapper">
             <div className="d-flex justify-content-between align-items-center mb-3">
-              <h5 className="mb-0">Top Performers</h5>
-              <button className="btn btn-primary btn-sm">Refresh Rankings</button>
+              <h5 className="mb-0">Team Rankings</h5>
+              <button className="btn btn-primary btn-sm" onClick={fetchLeaderboard}>Refresh Rankings</button>
             </div>
             <div className="table-responsive">
               <table className="table table-hover">
                 <thead className="table-light">
                   <tr>
                     <th>Rank</th>
-                    <th>User</th>
                     <th>Team</th>
-                    <th>Points</th>
-                    <th>Activities</th>
+                    <th>Total Points</th>
+                    <th>Last Updated</th>
                     <th>Status</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {leaderboard.map((entry, index) => (
-                    <tr key={entry.id || index} className={index < 3 ? 'table-warning' : ''}>
-                      <td>
-                        <strong style={{ fontSize: '1.2rem' }}>
-                          {getMedal(index + 1)}
-                        </strong>
-                      </td>
-                      <td><strong>{entry.user_name || entry.user || 'N/A'}</strong></td>
-                      <td>
-                        <span className="badge bg-success">
-                          {entry.team_name || entry.team || 'N/A'}
-                        </span>
-                      </td>
-                      <td>
-                        <span className="badge bg-primary">
-                          {entry.total_points || 0} pts
-                        </span>
-                      </td>
-                      <td>{entry.total_activities || 0}</td>
-                      <td>
-                        {index < 3 ? (
-                          <span className="badge bg-warning text-dark">Top 3</span>
-                        ) : (
-                          <span className="badge bg-secondary">Active</span>
-                        )}
-                      </td>
-                    </tr>
-                  ))}
+                  {leaderboard.map((entry, index) => {
+                    const rank = entry.rank || (index + 1);
+                    return (
+                      <tr key={entry._id || entry.id || index} className={rank <= 3 ? 'table-warning' : ''}>
+                        <td>
+                          <strong style={{ fontSize: '1.2rem' }}>
+                            {getMedal(rank)}
+                          </strong>
+                        </td>
+                        <td>
+                          <strong>{entry.team_name || 'N/A'}</strong>
+                        </td>
+                        <td>
+                          <span className="badge bg-primary">
+                            {entry.total_points || 0} pts
+                          </span>
+                        </td>
+                        <td>
+                          {entry.last_updated 
+                            ? new Date(entry.last_updated).toLocaleString() 
+                            : 'N/A'}
+                        </td>
+                        <td>
+                          {rank <= 3 ? (
+                            <span className="badge bg-warning text-dark">Top 3</span>
+                          ) : (
+                            <span className="badge bg-secondary">Active</span>
+                          )}
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
