@@ -1,0 +1,574 @@
+/* OctoFit Tracker - Classic CLI/Terminal Style */
+
+/* Import monospace font */
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Courier+Prime&display=swap');
+
+/* Global Terminal Styling */
+* {
+  font-family: 'Courier Prime', 'Courier New', monospace;
+}
+
+/* Main App Background - Classic Terminal */
+.App {
+  min-height: 100vh;
+  background-color: #000000;
+  color: #00ff00;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+  animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.97; }
+  50% { opacity: 1; }
+  100% { opacity: 0.97; }
+}
+
+/* Navigation Bar - Terminal Header */
+.navbar {
+  background-color: #0a0a0a !important;
+  border-bottom: 2px solid #00ff00;
+  box-shadow: 0 0 10px #00ff00;
+  padding: 1rem 0;
+  font-family: 'VT323', monospace;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: #00ff00 !important;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-shadow: 0 0 10px #00ff00;
+  letter-spacing: 2px;
+}
+
+.navbar-brand:hover {
+  color: #00ff00 !important;
+  text-shadow: 0 0 20px #00ff00;
+}
+
+.navbar-brand img {
+  height: 40px;
+  width: auto;
+  filter: brightness(1.1) hue-rotate(90deg);
+}
+
+.navbar .nav-link {
+  color: #00ff00 !important;
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  margin: 0 0.25rem;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.navbar .nav-link:hover {
+  border: 1px solid #00ff00;
+  background-color: rgba(0, 255, 0, 0.1);
+  color: #00ff00 !important;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+.navbar .nav-link::before {
+  content: "> ";
+}
+
+/* Page Headers - CLI Prompt Style */
+.page-header {
+  background-color: #0a0a0a;
+  color: #00ff00;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #00ff00;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-weight: bold;
+  text-shadow: 0 0 10px #00ff00;
+  color: #00ff00;
+  font-family: 'VT323', monospace;
+  font-size: 3rem;
+  letter-spacing: 3px;
+}
+
+.page-header h1::before {
+  content: "$ ";
+  color: #00ff00;
+}
+
+.page-header p {
+  color: #00ff00;
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+/* Cards Styling - Terminal Windows */
+.card {
+  transition: all 0.3s;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+  margin-bottom: 1rem;
+  height: 100%;
+  background-color: #0a0a0a;
+  border-radius: 0;
+  color: #00ff00;
+}
+
+.card:hover {
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+  border-color: #00ff00;
+}
+
+.card-header {
+  background-color: #000000;
+  color: #00ff00;
+  font-weight: bold;
+  border-bottom: 1px solid #00ff00;
+  border-radius: 0 !important;
+  font-family: 'VT323', monospace;
+  font-size: 1.5rem;
+}
+
+.card-header::before {
+  content: "[";
+}
+
+.card-header::after {
+  content: "]";
+}
+
+.card-title {
+  color: #00ff00;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-family: 'VT323', monospace;
+}
+
+.card-body {
+  color: #00ff00;
+  background-color: #0a0a0a;
+}
+
+/* Table Styling - CLI Table */
+.table-wrapper {
+  background-color: #0a0a0a;
+  padding: 1.5rem;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+  border-radius: 0;
+}
+
+.table {
+  margin-bottom: 0;
+  color: #00ff00;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table thead th {
+  background-color: #000000;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  padding: 1rem;
+  font-family: 'VT323', monospace;
+}
+
+.table tbody td {
+  padding: 1rem;
+  vertical-align: middle;
+  border: 1px solid #00ff00;
+  color: #00ff00;
+  background-color: #0a0a0a;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 255, 0, 0.1);
+  cursor: pointer;
+  box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+.table-warning {
+  background-color: rgba(0, 255, 0, 0.05) !important;
+}
+
+.table-light {
+  background-color: #000000 !important;
+}
+
+/* Badge Styling - Terminal Labels */
+.badge {
+  padding: 0.5rem 0.75rem;
+  font-weight: 600;
+  border-radius: 0;
+  font-size: 0.85rem;
+  border: 1px solid #00ff00;
+  font-family: 'VT323', monospace;
+  letter-spacing: 1px;
+}
+
+.badge.bg-primary {
+  background-color: #000000 !important;
+  color: #00ff00 !important;
+  border-color: #00ff00;
+}
+
+.badge.bg-success {
+  background-color: #000000 !important;
+  color: #00ff00 !important;
+  border-color: #00ff00;
+}
+
+.badge.bg-info {
+  background-color: #000000 !important;
+  color: #00ffff !important;
+  border-color: #00ffff;
+}
+
+.badge.bg-warning {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+  border-color: #ffff00;
+}
+
+.badge.bg-danger {
+  background-color: #000000 !important;
+  color: #ff0000 !important;
+  border-color: #ff0000;
+}
+
+.badge.bg-secondary {
+  background-color: #000000 !important;
+  color: #888888 !important;
+  border-color: #888888;
+}
+
+/* Button Styling - CLI Buttons */
+.btn {
+  border-radius: 0;
+  font-weight: 600;
+  padding: 0.6rem 1.75rem;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.875rem;
+  font-family: 'VT323', monospace;
+  border: 2px solid #00ff00;
+}
+
+.btn-primary {
+  background-color: #000000;
+  color: #00ff00;
+  border-color: #00ff00;
+}
+
+.btn-primary:hover {
+  background-color: rgba(0, 255, 0, 0.2);
+  border-color: #00ff00;
+  color: #00ff00;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+.btn-outline-primary {
+  color: #00ff00;
+  border: 2px solid #00ff00;
+  background: transparent;
+}
+
+.btn-outline-primary:hover {
+  background-color: rgba(0, 255, 0, 0.2);
+  border-color: #00ff00;
+  color: #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.btn-outline-secondary {
+  color: #888888;
+  border: 2px solid #888888;
+  background: transparent;
+}
+
+.btn-outline-secondary:hover {
+  background-color: rgba(136, 136, 136, 0.2);
+  border-color: #888888;
+  color: #888888;
+}
+
+.btn-outline-success {
+  color: #00ff00;
+  border: 2px solid #00ff00;
+  background: transparent;
+}
+
+.btn-outline-success:hover {
+  background-color: rgba(0, 255, 0, 0.2);
+  border-color: #00ff00;
+  color: #00ff00;
+}
+
+.btn-sm {
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+}
+
+.btn::before {
+  content: "[";
+  margin-right: 0.25rem;
+}
+
+.btn::after {
+  content: "]";
+  margin-left: 0.25rem;
+}
+
+/* Loading and Error States */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.spinner-border {
+  color: #00ff00 !important;
+  width: 3rem;
+  height: 3rem;
+  border-width: 0.25rem;
+}
+
+.error-message {
+  background-color: #1a0000;
+  color: #ff0000;
+  padding: 1.25rem;
+  border: 2px solid #ff0000;
+  margin: 1rem 0;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+  font-weight: 500;
+}
+
+.error-message::before {
+  content: "[ERROR] ";
+  font-weight: bold;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #00ff00;
+}
+
+.empty-state h3 {
+  color: #00ff00;
+  margin-top: 1rem;
+  font-family: 'VT323', monospace;
+  font-size: 2rem;
+}
+
+.empty-state p {
+  color: #00ff00;
+  opacity: 0.7;
+}
+
+.empty-state-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+  filter: grayscale(100%);
+}
+
+/* Home Page Jumbotron - Terminal Welcome */
+.jumbotron {
+  background-color: #0a0a0a;
+  color: #00ff00;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+  border-radius: 0;
+}
+
+.jumbotron h1 {
+  font-weight: bold;
+  color: #00ff00;
+  text-shadow: 0 0 15px #00ff00;
+  font-family: 'VT323', monospace;
+  font-size: 3.5rem;
+  letter-spacing: 3px;
+}
+
+.jumbotron .lead {
+  color: #00ff00;
+  font-size: 1.3rem;
+  opacity: 0.9;
+}
+
+.jumbotron p {
+  color: #00ff00;
+  opacity: 0.8;
+}
+
+.jumbotron hr {
+  border-top: 1px solid #00ff00;
+  margin: 2rem 0;
+  opacity: 0.5;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #00ff00;
+  font-weight: bold;
+  font-family: 'VT323', monospace;
+  text-shadow: 0 0 5px #00ff00;
+}
+
+.page-header h1,
+.page-header h2,
+.page-header h3,
+.page-header h4,
+.page-header h5,
+.page-header h6 {
+  color: #00ff00;
+}
+
+/* Links */
+a {
+  color: #00ff00;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #00ff00;
+  text-shadow: 0 0 10px #00ff00;
+}
+
+/* Container Spacing */
+.container,
+.container-fluid {
+  padding-top: 1rem;
+}
+
+/* CLI Prompt Effect */
+h5::before {
+  content: "> ";
+  color: #00ff00;
+}
+
+/* Strong text */
+strong {
+  color: #00ff00;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #000000;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #000000;
+  border: 1px solid #00ff00;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #00ff00;
+  border: 2px solid #000000;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #00ff00;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+  
+  .navbar-brand img {
+    height: 32px;
+  }
+  
+  .page-header {
+    padding: 1.5rem 0;
+  }
+  
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .table-wrapper {
+    overflow-x: auto;
+  }
+  
+  .btn {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Utility Classes */
+.mt-4 {
+  margin-top: 1.5rem !important;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+.text-gradient {
+  color: #00ff00;
+  text-shadow: 0 0 10px #00ff00;
+}
+
+/* CLI ASCII Art Effect */
+.display-4::before {
+  content: "┌────────────────────────────────────┐\A│ ";
+  white-space: pre;
+  display: block;
+  color: #00ff00;
+  font-size: 1rem;
+}
+
+.display-4::after {
+  content: "\A└────────────────────────────────────┘";
+  white-space: pre;
+  display: block;
+  color: #00ff00;
+  font-size: 1rem;
+}
+
+/* CRT Screen effect */
+.App::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+
