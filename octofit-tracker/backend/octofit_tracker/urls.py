@@ -26,6 +26,16 @@ from .views import (
     WorkoutViewSet
 )
 
+# Codespace URL configuration
+# API endpoints will be accessible at: https://$CODESPACE_NAME-8000.app.github.dev/api/
+CODESPACE_NAME = os.getenv('CODESPACE_NAME')
+if CODESPACE_NAME:
+    # Base URL for Codespaces: https://{CODESPACE_NAME}-8000.app.github.dev
+    BASE_URL = f'https://{CODESPACE_NAME}-8000.app.github.dev'
+else:
+    # Local development URL
+    BASE_URL = 'http://localhost:8000'
+
 # Create router and register viewsets
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
